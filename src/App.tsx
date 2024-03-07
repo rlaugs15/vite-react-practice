@@ -9,7 +9,7 @@ function App() {
   const isDark = useRecoilValue(isDarkAtom)
   return (
     <>
-      <div className={cls('w-screen h-screen', isDark ? 'dark' : '')}>
+      <div className={cls('', isDark ? 'dark' : '')}>
         <div className="bg-white dark:bg-black dark:text-white">
           <Header />
           <Outlet />
