@@ -8,7 +8,7 @@ function Coins() {
     return (
         <>
         <button onClick={onCoinClick}>코인으로 이동</button>
-        <div>Coins</div>
+        <div className="dark:text-red-300">Coins</div>
         </>
     )
 }

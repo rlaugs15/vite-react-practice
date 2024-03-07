@@ -1,5 +1,5 @@
 function Coin() {
-    return <div>coin</div>
+    return <div className="">coin</div>
 }
 
 export default Coin
