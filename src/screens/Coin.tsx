@@ -29,10 +29,14 @@ function Coin() {
                         </div>
                         <figure>
                             <div className="grid grid-cols-2 gap-3">
-                                <Link to='chart' className="py-3 font-semibold text-center rounded-lg bg-slate-400 focus:ring-4 ring-slate-500">
+                                <Link to='chart'
+                                    state={{coinId}}
+                                    className="py-3 font-semibold text-center rounded-lg bg-slate-400 focus:ring-4 ring-slate-500">
                                     차트
                                 </Link>
-                                <Link to='price' className="py-3 font-semibold text-center rounded-lg bg-slate-400 focus:ring-4 ring-slate-500">
+                                <Link to='price'
+                                    state={{coinId}}
+                                    className="py-3 font-semibold text-center rounded-lg bg-slate-400 focus:ring-4 ring-slate-500">
                                     가격
                                 </Link>
                             </div>
