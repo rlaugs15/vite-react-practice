@@ -7,7 +7,7 @@ function DarkBtn() {
         setIsDark((isDark: boolean) => !isDark)
     }
     return (
-            <button onClick={onDarkClick} className="p-2 bg-blue-400">다크모드</button>
+            <button onClick={onDarkClick} className="p-2 bg-blue-400 rounded-md">다크모드</button>
     )
 }
 

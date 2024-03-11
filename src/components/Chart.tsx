@@ -5,7 +5,7 @@ import ReactApexChart from "react-apexcharts"
 
 function Chart() {
     const {state: {coinId}} = useLocation()
-    const {isLoading, data} = useQuery<IHistorical[]>(['tickers', coinId], ()=>fetchCoinHistory(coinId))
+    const {isLoading, data} = useQuery<IHistorical[]>(['tickers', coinId], ()=>fetchCoinHistory(coinId), {refetchInterval: 3000})
       return (
     <>
       {isLoading ? (

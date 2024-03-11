@@ -4,6 +4,7 @@ import Coins from "./screens/Coins";
 import Coin from "./screens/Coin";
 import Chart from "./components/Chart";
 import Price from "./components/price";
+import ToDoList from "./screens/toDoList";
 
 const router = createBrowserRouter([
     {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
             {
                 path: '',
                 element: <Coins />
+            },
+            {
+                path: 'todoList',
+                element: <ToDoList />
             },
             {
                 path: ':coinId',
