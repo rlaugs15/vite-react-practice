@@ -1,13 +1,22 @@
-import { IToDo } from "../atoms";
+import { useSetRecoilState } from "recoil";
+import { IToDo, toDoList } from "../atoms";
 import CategoryBtn from "./CategoryBtn";
 
 function ToDo({ id, text, category }: IToDo) {
+  const setToDoList = useSetRecoilState(toDoList);
+  const ondeleteClick = () => {
+    setToDoList((oldToDos) => {
+      const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
+      return [
+        ...oldToDos.slice(0, targetIndex),
+        ...oldToDos.slice(targetIndex + 1),
+      ];
+    });
+  };
   return (
-    <div className="flex justify-between">
-      <div key={id} className="text-center border border-black border-1">
-        {text}
-      </div>
-      <div className="space-x-2">
+    <div className="grid w-full grid-cols-3">
+      <div className="col-span-2 text-center">{text}</div>
+      <div className="flex p-1 mr-3 space-x-2">
         <CategoryBtn
           id={id}
           category={category}
@@ -26,6 +35,9 @@ function ToDo({ id, text, category }: IToDo) {
           categoryName="DONE"
           text={text}
         />
+        {category === "DONE" ? (
+          <button onClick={ondeleteClick}>x</button>
+        ) : null}
       </div>
     </div>
   );

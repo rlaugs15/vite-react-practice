@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
-import { useSetRecoilState } from "recoil";
-import { toDoList } from "../atoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { toDoList, toDoSelector } from "../atoms";
 import ToDoBox from "../toDoComponents/ToDoBox";
 
 interface IForm {
@@ -18,7 +18,7 @@ function ToDoList() {
     setValue("toDo", "");
   };
   return (
-    <div className="flex flex-col items-center mx-10 space-y-8 bg-red-300 p-11">
+    <div className="flex flex-col items-center w-screen mx-10 space-y-8">
       <form onSubmit={handleSubmit(onToDoValue)}>
         <input
           {...register("toDo", { required: true })}
@@ -30,8 +30,10 @@ function ToDoList() {
           toDo생성
         </button>
       </form>
-      <main className="flex justify-center w-full bg-blue-300 mt-7 space-x-7">
-        <ToDoBox />
+      <main className="flex justify-center w-full mt-7 space-x-7">
+        <ToDoBox category="TODO" />
+        <ToDoBox category="DOING" />
+        <ToDoBox category="DONE" />
       </main>
     </div>
   );

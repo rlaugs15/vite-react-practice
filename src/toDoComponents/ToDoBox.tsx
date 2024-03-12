@@ -2,20 +2,24 @@ import { useRecoilValue } from "recoil";
 import { toDoList } from "../atoms";
 import ToDo from "./ToDo";
 
-function ToDoBox() {
-  const toDos = useRecoilValue(toDoList);
-  console.log(toDos);
+interface ToDoBoxProps {
+  category: "TODO" | "DOING" | "DONE";
+}
 
+function ToDoBox({ category }: ToDoBoxProps) {
+  const toDos = useRecoilValue(toDoList);
   return (
-    <div className="bg-green-300 border-2 border-black w-60">
-      {toDos.map((toDo) => (
-        <ToDo
-          key={toDo.id}
-          id={toDo.id}
-          text={toDo.text}
-          category={toDo.category}
-        />
-      ))}
+    <div className="p-5 border-black rounded-md shadow-xl w-96">
+      {toDos
+        .filter((toDo) => toDo.category === category)
+        .map((toDo) => (
+          <ToDo
+            key={toDo.id}
+            id={toDo.id}
+            text={toDo.text}
+            category={toDo.category}
+          />
+        ))}
     </div>
   );
 }
