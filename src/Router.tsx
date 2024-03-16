@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         element: <MovieApp />,
         children: [
           {
-            path: "movies",
+            path: "",
             element: <Movies />,
           },
           {

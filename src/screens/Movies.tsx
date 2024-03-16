@@ -1,7 +1,17 @@
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { useQuery } from "react-query";
+import { MoviesResponse, getMovies } from "../movieApi";
+import Banner from "../movieComponents/Banner";
 
 function Movies() {
-  return <motion.div className="h-[300vh] bg-green-300">Movies</motion.div>;
+  const { isLoading, data } = useQuery<MoviesResponse>(["movies"], getMovies);
+  return (
+    <div>
+      <Banner data={data!} isLoading={isLoading} />
+      <main className="bg-green-700">
+        <div className="mx-20 bg-red-300">hi</div>
+      </main>
+    </div>
+  );
 }
 
 export default Movies;

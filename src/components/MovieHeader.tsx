@@ -30,12 +30,12 @@ const logoVariants: Variants = {
 };
 
 function MovieHeader() {
-  const moviesMatch = useMatch("/movies/movies");
+  const moviesMatch = useMatch("/movies");
   const searchMatch = useMatch("/movies/search");
   const { scrollY } = useScroll();
   const navAnimation = useAnimation();
   useMotionValueEvent(scrollY, "change", (latest) => {
-    latest < 100 ? navAnimation.start("top") : navAnimation.start("scroll");
+    latest < 48 ? navAnimation.start("top") : navAnimation.start("scroll");
   });
   return (
     <motion.div
@@ -44,7 +44,7 @@ function MovieHeader() {
       animate={navAnimation}
       className="fixed flex justify-start w-screen p-3 space-x-5 text-xl font-semibold text-red-500 bg-black drop-shadow-md"
     >
-      <Link to="movies">
+      <Link to="">
         <motion.svg
           className="w-auto h-8"
           stroke="white"
@@ -66,7 +66,7 @@ function MovieHeader() {
           />
         </motion.svg>
       </Link>
-      <Link to="movies">
+      <Link to="">
         <div>Movie</div>
         {moviesMatch ? (
           <motion.div layoutId="underline" className="w-full bg-white border" />

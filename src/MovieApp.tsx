@@ -3,10 +3,10 @@ import MovieHeader from "./components/MovieHeader";
 
 function MovieApp() {
   return (
-    <>
+    <div className="text-white bg-black">
       <MovieHeader />
       <Outlet />
-    </>
+    </div>
   );
 }
 
