@@ -11,17 +11,17 @@ function Banner({ data, isLoading }: IBanner) {
     <div className="h-screen mt-14">
       {!isLoading
         ? data?.results.slice(0, 1)?.map((movie) => (
-            <figure className="flex h-full">
+            <figure className="flex h-full" key={movie.id}>
               <aside className="flex flex-col items-center w-2/5 p-5 px-12 pt-20">
                 <header className="text-5xl font-semibold mb-14">
                   {movie?.title}
                 </header>
                 <main className="space-y-8 text-2xl font-semibold">
                   <span>개봉일: {movie?.release_date}</span>
-                  <p>
+                  <div>
                     <div>줄거리: </div>
                     {movie?.overview}
-                  </p>
+                  </div>
                 </main>
               </aside>
               <div

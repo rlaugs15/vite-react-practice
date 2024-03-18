@@ -3,7 +3,7 @@ import MovieHeader from "./components/MovieHeader";
 
 function MovieApp() {
   return (
-    <div className="text-white bg-black">
+    <div className="overflow-x-scroll text-white bg-black">
       <MovieHeader />
       <Outlet />
     </div>

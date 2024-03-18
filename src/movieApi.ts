@@ -1,7 +1,7 @@
 const API_KEY = import.meta.env.VITE_MOVIE_API_KEY;
 const BASE_PATH = "https://api.themoviedb.org/3";
 
-interface Movie {
+export interface Movie {
   adult: boolean;
   backdrop_path: string | null;
   genre_ids: number[];
