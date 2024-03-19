@@ -7,10 +7,18 @@ function Movies() {
   const { isLoading, data } = useQuery<MoviesResponse>(["movies"], getMovies);
 
   return (
-    <div>
-      <Banner data={data!} isLoading={isLoading} />
-      <Slide title="상영 중인 영화" movies={data?.results!} />
-    </div>
+    <>
+      {isLoading ? (
+        <div className="flex items-center justify-center w-screen h-screen">
+          <span className="font-semibold text-7xl">로딩 중...</span>
+        </div>
+      ) : (
+        <div>
+          <Banner data={data!} isLoading={isLoading} />
+          <Slide title="상영 중인 영화" movies={data?.results!} />
+        </div>
+      )}
+    </>
   );
 }
 

@@ -2,6 +2,8 @@ import { AnimatePresence, Variants, motion } from "framer-motion";
 import { useState } from "react";
 import { makeImagePath } from "../libs/utils";
 import { Movie } from "../movieApi";
+import { Link } from "react-router-dom";
+import MovieCard from "./MovieCard";
 
 interface ISlide {
   title: string;
@@ -62,20 +64,12 @@ function Slide({ title, movies }: ISlide) {
           animate="end"
           exit="exit"
           transition={{ type: "tween", duration: 1 }}
-          className="absolute w-[90%] grid grid-cols-5 mx-20 gap-x-4 p-7 rounded-xl "
-          style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
+          className="absolute w-[90%] grid grid-cols-5 mx-20 gap-x-4 p-7 rounded-xl"
+          style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }}
           key={slideNum}
         >
-          {movies?.slice(slideNum, slideNum + 5).map((movie) => (
-            <motion.div
-              style={{
-                backgroundImage: `url(${makeImagePath(
-                  movie.backdrop_path + ""
-                )})`,
-              }}
-              className="bg-center bg-cover aspect-video"
-              key={movie.id}
-            />
+          {movies?.slice(slideNum, slideNum + 5).map((movie, index) => (
+            <MovieCard key={movie.id} movie={movie} index={index} />
           ))}
         </motion.div>
       </AnimatePresence>
