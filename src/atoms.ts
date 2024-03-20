@@ -22,3 +22,8 @@ export const toDoSelector = selector({
     ];
   },
 });
+
+export const movieScroll = atom({
+  key: "movieScroll",
+  default: false,
+});

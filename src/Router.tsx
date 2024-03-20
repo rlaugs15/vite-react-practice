@@ -10,6 +10,7 @@ import Ani from "./screens/Ani";
 import Movies from "./screens/Movies";
 import MovieApp from "./MovieApp";
 import Search from "./screens/Search";
+import MovieDetail from "./movieComponents/MovieDetail";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,12 @@ const router = createBrowserRouter([
           {
             path: "",
             element: <Movies />,
+            children: [
+              {
+                path: ":movieId",
+                element: <MovieDetail />,
+              },
+            ],
           },
           {
             path: "search",

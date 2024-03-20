@@ -12,13 +12,15 @@ function Banner({ data, isLoading }: IBanner) {
       {!isLoading
         ? data?.results.slice(0, 1)?.map((movie) => (
             <figure className="flex h-full" key={movie.id}>
-              <aside className="flex flex-col items-center w-2/5 p-5 px-12 pt-20">
-                <header className="text-5xl font-semibold mb-14">
+              <aside className="flex flex-col items-center w-4/6 p-5 px-12 pt-20">
+                <header className="flex-shrink font-semibold mb-14 text-[5vw]">
                   {movie?.title}
                 </header>
-                <main className="space-y-8 text-2xl font-semibold">
-                  <span>개봉일: {movie?.release_date}</span>
-                  <div>
+                <main className="flex-shrink space-y-8 text-2xl font-semibold">
+                  <span className="text-[1.4vw]">
+                    개봉일: {movie?.release_date}
+                  </span>
+                  <div className="text-[1.6vw]">
                     <div>줄거리: </div>
                     {movie?.overview}
                   </div>

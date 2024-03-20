@@ -1,6 +1,7 @@
 import { Variants, motion } from "framer-motion";
 import { makeImagePath } from "../libs/utils";
 import { Movie } from "../movieApi";
+import { useNavigate } from "react-router-dom";
 
 interface IMovie {
   movie: Movie;
@@ -30,9 +31,24 @@ const infoVariant: Variants = {
 };
 
 function MovieCard({ movie, index }: IMovie) {
+  const nav = useNavigate();
+  const onCardClick = (movie: Movie) => {
+    const { id, title, release_date, backdrop_path, overview } = movie;
+    nav(`${id}`, {
+      state: {
+        id,
+        title,
+        release_date,
+        backdrop_path,
+        overview,
+      },
+    });
+  };
   return (
     <div>
       <motion.div
+        layoutId={movie.id + ""}
+        onClick={() => onCardClick(movie)}
         variants={slideVariant}
         initial="nomal"
         whileHover="hover"
