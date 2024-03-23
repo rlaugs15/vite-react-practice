@@ -1,9 +1,14 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  useLocation,
+  useMatch,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { makeImagePath } from "../libs/utils";
 import { motion } from "framer-motion";
 import MovieDetailList from "./MovieDetailList";
 import { useEffect, useRef } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { movieScroll } from "../atoms";
 
 function MovieDetail() {
@@ -11,15 +16,24 @@ function MovieDetail() {
     state: { id, title, release_date, backdrop_path, overview },
   } = useLocation();
   const { movieId } = useParams();
+  const homeMatch = useMatch("/movies/:movieId");
+  const searchMatch = useMatch("/movies/search/:movieId");
   const nav = useNavigate();
   const onBackClick = () => {
-    nav("/movies");
+    if (homeMatch) {
+      nav("/movies");
+    } else if (searchMatch) {
+      nav("/movies/search");
+    }
   };
   //esc키 누르면 '/movies'화면으로
+
   useEffect(() => {
     const handleKeyPress = (event: { key: string }) => {
-      if (event.key === "Escape") {
+      if (event.key === "Escape" && homeMatch) {
         nav("/movies");
+      } else if (event.key === "Escape" && searchMatch) {
+        nav("/movies/search");
       }
     };
     window.addEventListener("keydown", handleKeyPress);

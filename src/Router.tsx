@@ -50,6 +50,12 @@ const router = createBrowserRouter([
           {
             path: "search",
             element: <Search />,
+            children: [
+              {
+                path: ":movieId",
+                element: <MovieDetail />,
+              },
+            ],
           },
         ],
       },
